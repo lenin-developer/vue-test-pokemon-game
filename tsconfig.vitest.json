@@ -1,11 +1,12 @@
 {
   "extends": "./tsconfig.app.json",
+  // "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests"], // esto es en caso de que tengamos una carpeta de test en raiz
   "exclude": [],
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.vitest.tsbuildinfo",
 
     "lib": [],
-    "types": ["node", "jsdom"]
+    "types": ["node", "jsdom", "vitest/globals"]
   }
 }
