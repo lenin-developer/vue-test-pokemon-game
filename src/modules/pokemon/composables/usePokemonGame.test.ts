@@ -38,9 +38,9 @@ vi.mock('canvas-confetti', () => ({
 }));
 
 describe('usePokemonGame', () => {
-  test('confetti excute', async () => {
-    vi.spyOn(pokemonApi, 'get').mockImplementation(() => Promise.resolve({ data: res }));
+  vi.spyOn(pokemonApi, 'get').mockImplementation(() => Promise.resolve({ data: res }));
 
+  test('confetti excute', async () => {
     const TestComponent = defineComponent({
       props: {
         /* ... */
@@ -57,7 +57,6 @@ describe('usePokemonGame', () => {
       },
     });
 
-
     const wrapper = mount(TestComponent);
 
     await flushPromises();
@@ -66,13 +65,16 @@ describe('usePokemonGame', () => {
     // const z = wrapper.vm.randomPokemon?.id
 
     // console.log(wrapper.vm.checkAnswer(wrapper.vm.randomPokemon?.id));
-    wrapper.vm.checkAnswer(wrapper.vm.randomPokemon?.id)
-    expect(confetti).toHaveBeenCalledTimes(1) // que haya sido llamado
-    expect(confetti).toHaveBeenCalledWith({ // que haya sido llamda con estos parametros
-        particleCount: 300,
-        spread: 150,
-        origin: { y: 0.6 },
-      })
-
+    wrapper.vm.checkAnswer(wrapper.vm.randomPokemon?.id);
+    expect(confetti).toHaveBeenCalledTimes(1); // que haya sido llamado
+    expect(confetti).toHaveBeenCalledWith({
+      // que haya sido llamda con estos parametros
+      particleCount: 300,
+      spread: 150,
+      origin: { y: 0.6 },
+    });
   });
+
+  
+
 });
